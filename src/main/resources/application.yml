@@ -1,0 +1,52 @@
+spring:
+  profiles:
+    active: gui
+  application:
+    name: cgame
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/games?useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false&zeroDateTimeBehavior=convertToNull&roundRobinLoadBalance=true&failOverReadOnly=false&tcpRcvBuf=1024000&loadBalanceStrategy=bestResponseTime&loadBalanceBlacklistTimeout=300000&loadBalancePingTimeout=1000&selfDestructOnPingMaxOperations=200&queryTimeoutKillsConnection=true&loadBalanceValidateConnectionOnSwapServer=true&connectTimeout=1000
+    username: root
+    password: A@DSFwr2123-sdfpw
+    jdbcInterceptors: ResetAbandonedTimer
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    tomcat:
+     initial-size: 5
+     max-wait: 20000
+     max-active: 500
+     max-idle: 10
+     min-idle: 5
+     default-auto-commit: true    
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+        hibernate.jdbc.batch_size: 50
+        dialect: org.hibernate.dialect.MySQLInnoDBDialect
+    show-sql: false
+#  rabbitmq:
+#    addresses: amqp://sad:Aug23-y-fast@sad1,amqp://sad:Aug23-y-fast@sad2
+#    virtual-host: /sms2_vhost
+#  redis:
+#    host: sad4
+#    port: 6379
+#    timeout: 60000
+server:
+  servlet:
+    context-path: /cgame
+  port: 8050
+  tomcat: 
+    connection-timeout: 20000
+    max-connections: 2000
+    max-threads: 800
+    accept-count: 2400
+logging:
+  path: /data/logs/cgame-logs
+  level:
+    root: INFO
+    #com.yunhui.sms2: DEBUG
+    #org.apache.http: DEBUG
+myconfig:
+  config:
+    isRedis: False
+    swagger-ui-open: true #open swagger
